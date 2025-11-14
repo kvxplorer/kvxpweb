@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>kvxplorer's site</title>
+  <link rel="icon" type="image/x-icon" href="https://kvxplorer.x10.mx/ico.ico">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <h1 style="font-size: 2em;">kvxplorer's site</h1>
+
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="guestbook.php">Guestbook</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <div class="image-map-wrapper">
+    <img class="background" src="background.png" usemap="#image-map">
+    <div id="tooltip" class="image-map-tooltip"></div>
+  </div>
+
+  <map name="image-map">
+    <area alt="About" href="about.html" coords="280,129,512,451" shape="rect">
+    <area alt="Guestbook" href="guestbook.php" coords="78,55,233,218" shape="rect">
+    <area alt="Gallery" href="gallery.html" coords="552,51,696,151" shape="rect">
+    <area alt="Projects" href="projects.html" coords="524,268,632,429" shape="rect">
+    <area alt="Contact" href="contact.html" coords="126,236,212,311" shape="rect">
+    <area alt="Blog" href="blog.html" coords="635,337,704,166" shape="rect">
+  </map>
+
+  <script>
+    const tooltip = document.getElementById('tooltip');
+    const areas = document.querySelectorAll('area');
+
+    areas.forEach(area => {
+      area.addEventListener('mousemove', e => {
+        tooltip.textContent = area.alt;
+        tooltip.style.left = e.pageX + 15 + 'px';
+        tooltip.style.top = e.pageY + 15 + 'px';
+        tooltip.style.opacity = '1';
+      });
+      area.addEventListener('mouseleave', () => {
+        tooltip.style.opacity = '0';
+      });
+    });
+  </script>
+</body>
+</html>
